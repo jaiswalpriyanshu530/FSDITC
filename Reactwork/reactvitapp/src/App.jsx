@@ -1,76 +1,100 @@
-import React from 'react'
-import Student from './Student'
-import StateHandling from './StateHandling'
-import ImageManipulation from './ImageManipulation'
-import UseEffectWork from './UseEffectWork'
+import React, { useState } from 'react'
+// import Student from './Student'
+// import Statehandlanding from './StateHandlanding'
+// import ImageManipulation from './ImageManipulation'
+// import UseEffectwork from './UseEffectwork'
 import Login from './Login'
 import Registration from './Registration'
-                                       //part of businees logic
+import{BrowserRouter,Routes,Route} from 'react-router-dom'
+import Mainlayout from './MainLayout';
+import Dashboard from './Dashboard';
+
 function App() {
-   
-  // const studentdata=[{
-  
-  //   image:photo,
-  //   name:"Saurabh Yadav",
-  //   roll:"145",
-  //   college:"ABES"
-  // },
-  //   {
-  //     image:photo,
-  //   name:"Sachin Yadav",
-  //   roll:"146",
-  //   college:"ABES"
-  //   },
-    
+  const[rdata,setrdata]=useState();
 
-  //  { image:photo,  
-  //   name:"Gaurav Yadav",
-  //   roll:"147",
-  //   college:"ABES"  
-  //  }
+
+
+
+//   const studentdata=[{
+//     image:"https://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/img/srixner.png ",
+//     name:"Shubham kumar",
+//     roll:"1234",
+//     college:"ABES Engineering College"
+//   },
+//   {
+//     image:"https://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/img/srixner.png ",
+//     name:"Nikhil kumar",
+//     roll:"1234",
+//     college:"ABES Engineering College"
+//   },
+//   {
+//     image:"https://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/img/srixner.png ",
+//     name:"Prajjwal kumar",
+//     roll:"1234",
+//     college:"ABES Engineering College"
+//   }
+// ]
+//   return (
+//     <div>
+//       <div>
+//         <h2 style={{color:'red'}}> Hello React JS</h2>
+//         <div>
+
+//           <div>
+//         {
+
+          
+//           studentdata.map((ele) => {
+//             return( 
+//               <Student data ={ele}/>
+//             )   
+            
+//           })
+//         }
+        
+//             {/* <Student data ={studentdata} /> */}
+//           </div>
+//           {/* <Student image={<img src={'https://commondatastorage.googleapis.com/codeskulptor-demos/riceracer_assets/img/srixner.png '} height={100} width={100} />} name="Shubham Kumar"  roll="123" college="Abes Engineering college"/> */}
+//         </div>
+//       </div>
+//     </div>
+//   )
+return(
+
+  
   
 
-  // ]
-  return(
+  
+
+  // <StateHandlanding/>
+  // <ImageManipulation/>
+  
+
+    // <UseEffectwork/>
+
     <div>
-      <div>
-        <h2 style={{color:'blue'}}>Hello React JS</h2>
-        <h2>Login Form</h2>
-        <Login/>
-        <br></br>
-        <h2>Registration Form</h2>
-        <Registration/>
-        <div>
-          {/* <UseEffectWork/> */}
-        </div>
-             <div>
-             {/* {
-               {
-                studentdata.map((ele)=>{
-                  return(
-                     <Student data ={ele}/>
-                  )
-                })
-                 }
-                } */}
-            {/* //  < Student data={studentdata}/> */}
-              </div>  
-              <div>
-                {/* <ImageManipulation/> */}
-              </div>
+     {JSON.stringify(rdata)}
 
+     <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Mainlayout/>}>
+      <Route path='/login' element={<Login logindata={rdata}/>}/>
+      <Route path='/reg' element={<Registration regdata={setrdata}/>}/>
+      <Route path='/dashboard' element={<Dashboard/>}/>
+      </Route>
+    </Routes>
 
-              {/* Here Start StateHandling */}
-              <div>
-                {/* <StateHandling/> */}
-              </div>
-           
-          <div>
-           {/* <Student image={<img src={photo} height={100} width={100} />} name="Saurabh"  roll="145"  college="ABESEC"/>          way to use component */}
-        </div>
-      </div>
+     </BrowserRouter>
+
+      {/* <h2>Login Form</h2>
+
+      <Login logindata={rdata}/>
+     <br></br>
+     <h2>Registration Form</h2>
+     <Registration regdata={setrdata}/> */}
     </div>
-  )
+  
+)
 }
 
 export default App
